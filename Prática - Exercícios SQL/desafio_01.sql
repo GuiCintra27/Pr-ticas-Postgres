@@ -1,0 +1,1 @@
+SELECT * from produtos WHERE nome LIKE '%Televisão%';
