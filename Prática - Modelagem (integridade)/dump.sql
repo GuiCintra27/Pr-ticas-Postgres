@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS "customers"(
     id SERIAL PRIMARY KEY,
     "fullName" VARCHAR(80) NOT NULL,
-    cpf VARCHAR(14) NOT NULL,
-    email VARCHAR(84) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(84) NOT NULL UNIQUE,
     password VARCHAR(32) NOT NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS "creditCards"(
     id SERIAL PRIMARY KEY,
     "bankAccountId" INTEGER NOT NULL,
     name VARCHAR(80) NOT NULL,
-    number VARCHAR(20) NOT NULL,
+    number VARCHAR(20) NOT NULL UNIQUE,
     "securityCode" VARCHAR(4) NOT NULL,
     "expirationMonth" INTEGER NOT NULL CHECK( 0 < "expirationMonth" < 13),
     "expirationYear" INTEGER NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS "creditCards"(
 CREATE TABLE IF NOT EXISTS "customerPhones"(
     id SERIAL PRIMARY KEY,
     "customerId" INTEGER NOT NULL,
-    number VARCHAR(15) NOT NULL
+    number VARCHAR(15) NOT NULL UNIQUE
     type ENUM('landline', 'mobile') NOT NULL,
 );
 
